@@ -1,6 +1,6 @@
 <?php
 
-    class Home extends Loader{
+    class Home extends controller{
         function index(){
             $this->view("home");
         }

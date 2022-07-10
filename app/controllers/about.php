@@ -1,6 +1,6 @@
 <?php
 
-    class About extends Loader{
+    class About extends controller{
         function index(){
             $this->view("about");
         }

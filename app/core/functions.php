@@ -43,5 +43,15 @@
         return false;
     }
 
+    function set_value($key){
+
+        if(!empty($_POST[$key])){
+            return $_POST[$key];
+        }
+
+        return '';
+    }
+
+
 
 ?>

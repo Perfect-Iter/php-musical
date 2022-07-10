@@ -4,6 +4,12 @@
 
 <?php
     $action = strtolower($data['action']);
+
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        $user = $this->loadModel("user");
+        $user->addUser($_POST);
+        //show($_POST);
+    }
 ?>
 
     <section class="admin-content" style="min-height: 400px;">
@@ -13,39 +19,30 @@
                 <div class="" style="max-width: 500px; margin: auto">
                     <form action="" method="post">
                         <h3>Add New User</h3>
-                        <input class="form-control my-1" type="text" name="username" id="username" placeholder="Username">
                         
-                        <?php if(!empty($errors['username'])):?>
-                            <small class="error"><?=$errors['username']?></small>
-                        <?php endif;?>
+                        <div class="" style="margin-top: 10px; color: red;">
+                            <?php
+                                check_error_message();
+                            ?>
+                        </div>
+                        <input class="form-control my-1" type="text" value="<?=set_value('username')?>" name="username" id="username" placeholder="Username">
 
-                        <input class="form-control my-1" type="email" name="email" id="email" placeholder="Email">
-                        
-                        <?php if(!empty($errors['email'])):?>
-                            <small class="error"><?=$errors['email']?></small>
-                        <?php endif;?>
-                        
+
+                        <input class="form-control my-1" value="<?=set_value('email')?>"" type="email" name="email" id="email" placeholder="Email">
+                    
                         <select name="role" id="role" class="form-control my-1">
                             <option value="">--Select Role--</option>
-                            <option value="">User</option>
-                            <option value="">Admin</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
                         </select>
+                
                         
-                        <?php if(!empty($errors['role'])):?>
-                            <small class="error"><?=$errors['role']?></small>
-                        <?php endif;?>
+                        <input class="form-control my-1" type="password" value="<?=set_value('password')?>"" name="password" id="password" placeholder="Password">
                         
-                        <input class="form-control my-1" type="password" name="password" id="password" placeholder="Password">
+
                         
-                        <?php if(!empty($errors['password'])):?>
-                            <small class="error"><?=$errors['password']?></small>
-                        <?php endif;?>
+                        <input class="form-control my-1" type="password" value="<?=set_value('confirm_password')?>"" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
                         
-                        <input class="form-control my-1" type="text" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
-                        
-                        <?php if(!empty($errors['confirm_password'])):?>
-                            <small class="error"><?=$errors['confirm_password']?></small>
-                        <?php endif;?>
 
                         <button type="submit" class="btn bg-orange">Create</button>
                         <a href="http://localhost/musixx/public/admin/users">

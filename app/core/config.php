@@ -9,7 +9,7 @@
         define("DB_HOST","localhost");
         define("DB_USER","root");
         define("DB_PASSWORD","");
-        define("DB_NAME","music_site_db");
+        define("DB_NAME","musixx_db");
     } else{
         //online server
         define("ROOT", "http://www.mysite.com");
